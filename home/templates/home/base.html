@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>WebChat</title>
+
+  <meta link-colorarset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Nanum+Gothic&family=Nova+Flat&family=Source+Sans+Pro:wght@300&family=Space+Grotesk&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="{% static 'home/images/logo.png' %}" type="image/x-icon"/>
+
+  <link rel="stylesheet" type="text/css" href="/static/home/css/style.css?{% now 'U' %}">
+
+  {% block style %}
+
+  {% endblock style %}
+
+</head>
+
+<body class="main-theme-bg">
+
+  <div class="container wider-padding centre-xy position-absolute">
+    <div class="row">
+      <div class="col-lg-8 col-md-8">
+        <div class="d-flex flex-column wider-padding">
+          <div class="d-flex w-100 m-2 p-2 justify-content-sm-center justify-content-md-start justify-content-lg-start">
+            <img src="{% static 'home/images/logo.png' %}" class="logo-img m-2"/>
+            <h2 class="ml-1 font-space-grotesk lighter-green-color">WebChat</h2>
+          </div>
+          <div class="m-2">
+            <h3 class="font-nova-flat lighter-yellow-color"><span class="font-serif" style="font-size:2.3rem;color:#fdcb9e">"</span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. </h3>
+          </div>
+          <div class="text-center m-3">
+            {% block button %}
+            
+            {% endblock button %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 lighter-green-bg rounded p-4">
+        <div class="wider-padding position-relative centre-xy">
+          {% block content %}
+
+          {% endblock content %}
+          <small class="font-space-grotesk text-center"><b>Share this classroom link with your friends to join {% block mini-statement %}{% endblock mini-statement %}</b></small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% block message-modal %}
+
+{% endblock message-modal %}
+
+</body>
+
+</html>
+

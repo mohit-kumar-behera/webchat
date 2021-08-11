@@ -1,0 +1,10 @@
+from django.urls import path
+from . import views
+
+app_name = "home"
+
+
+urlpatterns = [
+    path("",views.home,name="home"),
+    path("generate/",views.generate_link,name="generate-link")
+]

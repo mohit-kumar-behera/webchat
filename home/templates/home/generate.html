@@ -1,0 +1,71 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="/static/home/css/home.css?{% now 'U' %}">
+{% endblock style %}
+
+
+{% block button %}
+	<a href="{% url 'home:home' %}"><button class="wc-btn p-2 w-70 font-nanum-gothic wc-action-btn wc-generate-btn">Go Back</button></a>
+{% endblock button %}
+
+
+{% block content %}
+	<form method="post" action="{% url 'home:generate-link' %}">
+		{% csrf_token %}
+		<h3 class="font-nanum-gothic main-theme-color">Create Classroom</h3>
+		<!-- c__ stands for creater -->
+	    <div class="input-group mb-3">
+	      <div class="input-group-btn">
+		    <button type="button" disabled class="btn btn-success">
+		      <span>ID</span>
+		    </button>
+		  </div>
+	      <input type="text" class="form-control" id="c__class_id" name="c__class_id" value="{{ ID }}" readonly>
+	      <div class="input-group-btn">
+		    <button type="button" class="btn btn-info copy-btn" title="Copy" data-placement="top" data-toggle="tooltip">
+		      <i class="fas fa-clipboard copy-icon"></i>
+		    </button>
+		  </div>
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" name="c__class_name" required spellcheck="false" placeholder="Classroom Name" autocomplete="off">
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" name="c__user_name" required spellcheck="false" placeholder="Enter Your Name (Creater)" autocomplete="off">
+	    </div>
+	    <button type="submit" class="wc-btn wc-action-btn wc-jc-btn font-nanum-gothic pl-2 pr-2 centre-x position-relative">Create</button>
+   	</form>
+
+   	<script>
+		$(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		})
+	</script>
+
+
+   	<script>
+   		const d = document;
+   		const copyBtn = d.getElementsByClassName("copy-btn")[0];
+   		const classID = d.getElementById("c__class_id");
+   		const copyIcon = d.getElementsByClassName("copy-icon")[0];
+   		copyBtn.onclick = function() {
+   			uniqueID = classID.getAttribute("value");
+   			navigator.clipboard.writeText(uniqueID).then(function(){
+   				classID.select();
+   				copyIcon.classList.remove("fa-clipboard");
+   				copyIcon.classList.add("fa-check")
+   				setTimeout(function(){
+   					copyIcon.classList.remove("fa-check");
+   					copyIcon.classList.add("fa-clipboard");
+   				},1000)
+   			})
+   		}
+   	</script>
+
+{% endblock content %}
+
+{% block mini-statement %}
+	after creating the class.
+{% endblock mini-statement %}

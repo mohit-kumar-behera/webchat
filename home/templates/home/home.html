@@ -1,0 +1,50 @@
+
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" type="text/css" href="/static/home/css/home.css?{% now 'U' %}">
+{% endblock style %}
+
+
+{% block button %}
+	<a href="{% url 'home:generate-link' %}"><button class="wc-btn p-2 w-70 font-nanum-gothic wc-action-btn wc-generate-btn">Generate Link</button></a>
+{% endblock button %}
+
+
+{% block content %}
+	<form method="post" action="{% url 'home:home' %}">
+		{% csrf_token %}
+		<h3 class="font-nanum-gothic main-theme-color">Join Classroom</h3>
+	    <div class="form-group">
+	      <input type="text" class="form-control" name="class_id" required spellcheck="false" placeholder="Classroom Link" {% if sessClassID %}value="{{ sessClassID }}" readonly{% endif %} autocomplete="off">
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" name="user_name" required spellcheck="false" placeholder="Enter Your Name" {% if sessName %}value="{{ sessName }}" readonly{% endif %} autocomplete="off">
+	    </div>
+	    <button type="submit" class="wc-btn wc-action-btn wc-jc-btn font-nanum-gothic pl-2 pr-2 centre-x position-relative">Join</button>
+   	</form>
+
+{% endblock content %}
+
+
+
+{% block message-modal %}
+
+	{% if message %}
+	   	<div class="modal fade" id="message">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" onfocus="this.style.outline='none'" data-dismiss="modal">&times;</button>
+						<h4>{{ message }}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$("#message").modal("show")
+		</script>
+	{% endif %}
+
+{% endblock message-modal %}
