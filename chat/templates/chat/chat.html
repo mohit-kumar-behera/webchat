@@ -1,17 +1,11 @@
-
 {% extends "chat/base.html" %}
 {% load static %}
 
-
 {% block style %}
-	<link rel="stylesheet" type="text/css" href="/static/home/css/chat.css?{% now 'U' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}?{% now 'U' %}">
 {% endblock style %}
 
-
-
 {% block content %}
-
-
 	<div class="container chatbox-container p-0 position-absolute centre-xy bg-light h-chatbox w-chatbox-auto rounded">
 		<div class="chatbox-head w-100 p-2 rounded-top d-flex justify-content-between border-bottom">
 			<div class="d-flex">
@@ -72,9 +66,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 <script>
 	/* member list from the classroom */
 	const membersList = document.getElementsByClassName("members-list")[0];
@@ -93,20 +84,9 @@
 	});
 </script>
 
-<script>
-	const d=document,copyBtn=d.getElementsByClassName("copy-btn")[0],classID=d.getElementById("c__class_id"),copyIcon=d.getElementsByClassName("copy-icon")[0];copyBtn.onclick=function(){uniqueID=classID.getAttribute("value"),navigator.clipboard.writeText(uniqueID).then(function(){classID.select(),copyIcon.classList.remove("fa-clipboard"),copyIcon.classList.add("fa-check"),setTimeout(function(){copyIcon.classList.remove("fa-check"),copyIcon.classList.add("fa-clipboard")},1e3)})};
-</script>
-
-<script>
-	const chatbox=document.getElementsByClassName("chatbox-container")[0],chatboxBody=document.getElementsByClassName("chatbox-body")[0],chatboxHead=document.getElementsByClassName("chatbox-head")[0],chatboxFooter=document.getElementsByClassName("chatbox-footer")[0];chatboxScroll();var chatboxHeight=chatbox.offsetHeight,chatboxHeadHeight=chatboxHead.offsetHeight,chatboxFootHeight=chatboxFooter.offsetHeight,chatboxBodyHeight=chatboxHeight-(chatboxHeadHeight+chatboxFootHeight);function chatboxScroll(){let t=chatboxBody.scrollHeight;$(".chatbox-body").animate({scrollTop:t},100)}chatboxBody.style.height=chatboxBodyHeight+"px";
-</script>
-
-<script>
-	const messageBox=document.getElementsByClassName("send-message-box")[0],sendMessageBtn=document.getElementsByClassName("send-message")[0];messageBox.onkeyup=function(){this.value.length>0?sendMessageBtn.removeAttribute("disabled"):sendMessageBtn.setAttribute("disabled",!0)};const csrf_token=document.querySelector("[name='csrfmiddlewaretoken']"),messageDiv=document.getElementsByClassName("chatbox-body"),lastMessageDiv=messageDiv[0];sendMessageBtn.onclick=function(){let e=messageBox.value.trim(),s=csrf_token.value;$.ajax({type:"POST",url:"{% url 'chat:send-message' %}",data:{message:e,csrfmiddlewaretoken:s},success:function(s){if(s.successfull){let s=document.createElement("p"),t=document.createElement("div"),a=document.createTextNode(e);t.className="message u__message m-1 p-2",s.append(a),t.append(s),lastMessageDiv.append(t),messageBox.value="",sendMessageBtn.setAttribute("disabled",!0),chatboxScroll()}}})};
-</script>
-
-<script>
-	const messages=document.getElementsByClassName("message o__message");var loop=setInterval(extractMessages,2e3),csrf=csrf_token.value;function extractMessages(){let e=messages[messages.length-1].getAttribute("chat-id");$.ajax({type:"POST",url:"{% url 'chat:receive-messages' %}",data:{csrfmiddlewaretoken:csrf,lastShownMessageId:e},success:function(e){if(e.successfull)for(i=0;i<e.messages.length;i++){chat_message=e.messages[i][0],chat_id=e.messages[i][1],chat_by=e.messages[i][2];let s=document.createElement("p"),t=document.createElement("span"),a=document.createElement("div"),c=document.createAttribute("chat-id"),m=document.createTextNode(chat_message),n=document.createTextNode(chat_by+" : ");c.value=chat_id,a.setAttributeNode(c),a.className="message o__message m-1 p-2",t.className="text-dark font-weight-bolder",t.append(n),s.append(t),s.append(m),a.append(s),lastMessageDiv.append(a),chatboxScroll()}}})}
-</script>
-
 {% endblock content %}
+
+{% block script %} 
+	<script type="text/javascript" src="{% static 'js/clipboard.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+{% endblock script %}

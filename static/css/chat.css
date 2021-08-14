@@ -1,0 +1,143 @@
+
+/*WIDTH*/
+@media screen and (min-width:920px) {
+	.w-chatbox-auto {
+		width:45%;
+	}
+}
+@media screen and (min-width:740px) and (max-width:919px) {
+	.w-chatbox-auto {
+		width:52%;
+	}
+}
+@media screen and (min-width:500px) and (max-width:740px) {
+	.w-chatbox-auto {
+		width:70%;
+	}
+}
+@media screen and (min-width:0px) and (max-width:500px) {
+	.w-chatbox-auto {
+		width:98%;
+	}
+}
+
+/*HEIGHT*/
+.h-chatbox {
+	height:570px;
+}
+
+/*CHATBOX*/
+.chatbox-container {
+	box-shadow:0px 0px 8px #44004790
+}
+.chatbox-container .chatbox-body {
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+.chatbox-head, .chatbox-footer {
+	background:#fde9df;  
+}
+.chatbox-footer {
+	border-top:0.7px solid lightgrey;
+}
+.chatbox-body {
+	background:#f2f4fb;
+	font-size:0.78rem;
+}
+.send-message-box {
+	width:85%;
+	border-radius:10px;
+	box-sizing:border-box;
+	border:1.4px solid #28df9970;
+	resize:none;
+}
+.send-message-box:focus {
+	border:1.4px solid #28df99;
+	outline:none;
+}
+
+/*Message Section*/
+.message {
+	width:auto;
+	max-width:95%;
+	clear:both;
+	border-radius:7px;
+}
+/*u__ is user, o__ is others*/
+.message.u__message {
+	float:right;
+	background:#21bf73;
+}
+.message.u__message > p {
+	color:#fff;
+}
+.message.o__message {
+	float:left;
+	background:#fd5e53;
+	color:#f6f7d4;
+}
+.message > p {
+	white-space: pre-wrap;	
+}
+
+/*BUTTON*/
+.wc-chatbox-btn {
+	border-radius:50%;
+}
+.wc-chatbox-btn > i {
+	font-size:1rem;
+	color:#21bf73;
+}
+.wc-chatbox-btn[name="send-message"]{
+	border:1px solid #21bf73;
+}
+.wc-chatbox-btn[name="send-message"] > i {
+	font-size:1.2rem;
+}
+.wc-chatbox-btn:not(:disabled):hover > i {
+	color:#fff;
+}
+.wc-chatbox-btn:not(:disabled):hover {
+	background:#21bf73;
+}
+.wc-chatbox-btn:disabled {
+	border:1.4px solid lightgrey;
+	cursor:not-allowed;
+}
+.wc-chatbox-btn:disabled > i{
+	color:lightgrey;
+}
+
+
+/*Styling the scroll bar*/
+
+::-webkit-scrollbar
+{
+  width:2.8px;
+  height:1px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background:#006a71;
+}
+
+/*end of styling scroll bar */
+
+
+/*
+#28df99
+#99f3bd
+#d2f6c5
+#f6f7d4
+*/
+
+
+/*
+
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Nova Flat', cursive;
+font-family: 'Source Sans Pro', sans-serif;
+font-family: 'Space Grotesk', sans-serif;
+
+*/

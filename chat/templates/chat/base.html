@@ -22,21 +22,17 @@
 
   <link rel="icon" href="{% static 'home/images/logo.png' %}" type="image/x-icon"/>
 
-  <link rel="stylesheet" type="text/css" href="/static/home/css/style.css?{% now 'U' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now 'U' %}">
 
-  {% block style %}
-
-  {% endblock style %}
+  {% block style %} {% endblock style %}
 
 </head>
 
 <body class="main-theme-bg p-5">
 
-  {% block content %}
-
-  {% endblock content %}
+  {% block content %} {% endblock content %}
+  {% block script %} {% endblock script %}
 
 </body>
-
 </html>
 
