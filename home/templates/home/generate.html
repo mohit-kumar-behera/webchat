@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-	<link rel="stylesheet" type="text/css" href="/static/home/css/home.css?{% now 'U' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}?{% now 'U' %}">
 {% endblock style %}
 
 
@@ -44,28 +44,12 @@
 		})
 	</script>
 
-
-   	<script>
-   		const d = document;
-   		const copyBtn = d.getElementsByClassName("copy-btn")[0];
-   		const classID = d.getElementById("c__class_id");
-   		const copyIcon = d.getElementsByClassName("copy-icon")[0];
-   		copyBtn.onclick = function() {
-   			uniqueID = classID.getAttribute("value");
-   			navigator.clipboard.writeText(uniqueID).then(function(){
-   				classID.select();
-   				copyIcon.classList.remove("fa-clipboard");
-   				copyIcon.classList.add("fa-check")
-   				setTimeout(function(){
-   					copyIcon.classList.remove("fa-check");
-   					copyIcon.classList.add("fa-clipboard");
-   				},1000)
-   			})
-   		}
-   	</script>
-
 {% endblock content %}
 
 {% block mini-statement %}
 	after creating the class.
 {% endblock mini-statement %}
+
+{% block script %} 
+	<script type="text/javascript" src="{% static 'js/clipboard.js' %}"></script>
+{% endblock script %}

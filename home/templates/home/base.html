@@ -20,13 +20,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Nanum+Gothic&family=Nova+Flat&family=Source+Sans+Pro:wght@300&family=Space+Grotesk&display=swap" rel="stylesheet">
 
-  <link rel="icon" href="{% static 'home/images/logo.png' %}" type="image/x-icon"/>
+  <link rel="icon" href="{% static 'media/logo.png' %}" type="image/x-icon"/>
 
-  <link rel="stylesheet" type="text/css" href="/static/home/css/style.css?{% now 'U' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now 'U' %}">
 
-  {% block style %}
-
-  {% endblock style %}
+  {% block style %} {% endblock style %}
 
 </head>
 
@@ -37,7 +35,7 @@
       <div class="col-lg-8 col-md-8">
         <div class="d-flex flex-column wider-padding">
           <div class="d-flex w-100 m-2 p-2 justify-content-sm-center justify-content-md-start justify-content-lg-start">
-            <img src="{% static 'home/images/logo.png' %}" class="logo-img m-2"/>
+            <img src="{% static 'media/logo.png' %}" class="logo-img m-2"/>
             <h2 class="ml-1 font-space-grotesk lighter-green-color">WebChat</h2>
           </div>
           <div class="m-2">
@@ -61,10 +59,9 @@
     </div>
   </div>
 
-{% block message-modal %}
+{% block message-modal %} {% endblock message-modal %}
 
-{% endblock message-modal %}
-
+{% block script %} {% endblock script %}
 </body>
 
 </html>

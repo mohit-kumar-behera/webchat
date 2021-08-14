@@ -3,14 +3,13 @@
 {% load static %}
 
 {% block style %}
-	<link rel="stylesheet" type="text/css" href="/static/home/css/home.css?{% now 'U' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}?{% now 'U' %}">
 {% endblock style %}
 
 
 {% block button %}
 	<a href="{% url 'home:generate-link' %}"><button class="wc-btn p-2 w-70 font-nanum-gothic wc-action-btn wc-generate-btn">Generate Link</button></a>
 {% endblock button %}
-
 
 {% block content %}
 	<form method="post" action="{% url 'home:home' %}">
@@ -26,8 +25,6 @@
    	</form>
 
 {% endblock content %}
-
-
 
 {% block message-modal %}
 
